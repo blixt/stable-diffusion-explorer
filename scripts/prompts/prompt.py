@@ -27,15 +27,6 @@ class Prompt:
         # Create a unique hash for the prompt.
         self.hash = hash_values(**self.to_kwargs())
 
-    def with_new_base_prompt(self, base_prompt: str):
-        return Prompt(base_prompt, self.keywords, width=self.width, height=self.height, steps=self.steps, seed=self.seed)
-
-    def with_new_keywords(self, keywords: list[str]):
-        return Prompt(self.base_prompt, keywords, width=self.width, height=self.height, steps=self.steps, seed=self.seed)
-
-    def with_new_seed(self, seed=None):
-        return Prompt(self.base_prompt, self.keywords, width=self.width, height=self.height, steps=self.steps, seed=seed)
-
     @classmethod
     def read_json(cls, path: str):
         with open(path, "r", encoding="utf-8") as fh:
